@@ -1,0 +1,10 @@
+.vscode/settings.json
+app/__pycache__/__init__.cpython-37.pyc
+app/__pycache__/routes.cpython-37.pyc
+__pycache__/caespes.cpython-37.pyc
+__pycache__/config.cpython-37.pyc
+app/__pycache__/forms.cpython-37.pyc
+app/__pycache__/models.cpython-37.pyc
+migrations/__pycache__/env.cpython-37.pyc
+migrations/versions/__pycache__/69e550befc23_posts_table.cpython-37.pyc
+migrations/versions/__pycache__/fc6fa8c786a9_users_table.cpython-37.pyc
