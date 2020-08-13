@@ -10,9 +10,9 @@ class AssetForm(FlaskForm):
 
     name = StringField('Name', validators=[DataRequired(), validators.required(), validators.length(max=100)])
     owner = StringField('Owner', validators=[validators.required(), validators.length(max=100)])
-    properties = StringField('Properties', validators=[validators.required(), validators.length(max=1200)])
-    services = StringField('Services', validators=[validators.required(), validators.length(max=1200)])
-    events = StringField('Events', validators=[validators.required(), validators.length(max=1200)])
+    properties = StringField('Properties (comma or space separated)', validators=[validators.required(), validators.length(max=1200)])
+    services = StringField('Services (comma or space separated)', validators=[validators.required(), validators.length(max=1200)])
+    events = StringField('Events (comma or space separated)', validators=[validators.required(), validators.length(max=1200)])
     submit = SubmitField('Add device')
 
 #description = TextAreaField('Description', validators=[validators.required(), validators.length(max=1000)], render_kw={'rows': "8", 'cols': "30"})

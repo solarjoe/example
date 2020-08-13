@@ -1,0 +1,73 @@
+{% extends "base_holygrail.html" %}
+
+{% block title %}
+Some Title
+{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+If you are looking for an industry-grade replacement for MQTT have a look
+the following frameworks / protocols:
+
+<h5>OPC-UA</h5>
+General information about this protocol can be found <a href="https://opcfoundation.org/about/opc-technologies/opc-ua/" target="_blank">here</a>.
+
+There is an <a href="https://python-opcua.readthedocs.io/en/latest/" target="_blank">implementation for Python</a>. 
+
+<h5>DDS</h5>
+
+General information about this protocol can be found <a href="https://www.rti.com/products/dds-standard" target="_blank">here</a>.
+<p></p>
+There are several implementations that support Python, e.g. <a href="http://download.prismtech.com/docs/Vortex/html/ospl/PythonDCPSAPIGuide/dds_entities.html" target="_blank">Vortex</a> 
+or <a href="https://community.rti.com/downloads/experimental/rticonnextdds-connector" target="_blank">RTI Connector</a>.
+
+<h5>Further options</h5>
+
+XMPP, AMQP
+
+{% endblock %}
+
+{% block sidebar1 %}
+<p>Sidebar 1</p>
+
+<div>
+
+    <p>Envelope icon: <span class="fas fa-envelope"></span></p>    
+    <p>Envelope link:
+      <a href="#">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </p>
+    <p>Search icon: <span class="fas fa-search"></span></p>
+    <p>A button:<br>
+      <button type="button" class="btn btn-default">
+        <span class="fas fa-search"></span> Search
+      </button>
+    </p>
+    <p>A styled button? :
+      <button type="button" class="btn btn-info">
+        <span class="fas fa-camera-retro"></span> Search
+      </button>
+    </p>
+    <p>Print icon: <span class="fas fa-camera-retro"></span></p>      
+    <p>styled link button??<br>
+      <a href="#" class="btn btn-success btn-lg">
+        <span class="fas fa-camera-retro"></span> Print 
+      </a>
+    </p> 
+  </div>
+
+{% endblock %}
+
+
+{% block sidebar2 %}
+{% endblock %}
+
+
+{% block footer %}
+<p>Footer</p>
+{% endblock %}

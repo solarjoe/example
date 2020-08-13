@@ -10,6 +10,10 @@ Some Title
 {% endblock %}
 
 {% block content %}
+<h3>How to consume a REST API</h3>
+<p>{{ joke }}</p>
+<hr>
+
 <h3>Asset / IoT Device List</h3>
 {% for a in assets %}
         <div><p><b>{{ a.name }}</b> (Owner: {{ a.owner }}) <p>Properties: {{ a.properties }}</p> <p>Services: {{ a.services }} </p><p>Events: {{ a.events }}</p></p></div>

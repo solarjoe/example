@@ -1,0 +1,124 @@
+{% extends "base_holygrail.html" %}
+
+{% block title %}
+Some Title
+{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h3>RAMI 4.0 (Reference Architectural Model Industrie)</h3>
+
+<h4>Glossary</h4>
+
+<h5>Asset</h5>
+
+Some thing (maybe of value) that you have (maybe own) and would like to use.
+Could be hardware, like a machine or an assembly line. But also a cake, a car, a cat.
+And also virtual things like software, a database, an archive, an idea. 
+Secret agents also have assets (dt. Informanten).
+ 
+<h5>Administration Shell, Asset Administration Shell (AAS) (dt.: Verwaltungsschale)</h5>
+A well defined, thin, general interface that is put around (very different) assets
+to allow for a unified communication. It does not add functionality or logic to 
+the asset itself. Can be used to make an asset a self-describing component, 
+that can provide e.g. its name, its properties, its state and its 
+capabilities (services) in a so called Manifest. 
+The Manifest acts as a clearly locatable table of contents for all information,
+data and functions in the Administration Shell.
+
+
+<h4>Concept</h4 >
+
+<p></p>
+One part of the <a href="https://www.dke.de/de/arbeitsfelder/industry/rami40" target="_blank">RAMI</a> is that 
+so called <i>Assets</i> communicate with each other via lightweight <i>Asset Administration Shells</i> (AAS).
+
+
+<br>
+An asset is the owner of exactly one AAS, but can consume an arbitrary number of other AAS.
+Each AAS comprises a number of submodels (SM), basically different aspects 
+of one and the same asset. Each submodel defines Properties, Events, and Operations. 
+
+
+<h4>Implementation</h4 >
+One of many many ways to implement an AAS is to define them using JSON files.
+
+Each submodel is defined in a separate JSON file. One example for a definition
+of a X-ray machine can be found <a href="static/xray.json" target="_blank">here</a>. 
+</p>
+
+The JSON file for a submodel has to comply with a given schema. It is a definition of fields (mandatory, optional) and types (e.g. `int`, `float`, `bool`) that are allowed in the submodel file. 
+
+An example schema can be found <a href="static/submodel_schema.json" target="_blank">here</a>.
+
+<p></p>
+<img src="static/rami_shell_02.jpg" style="width:640px;">
+
+
+
+{% endblock %}
+
+{% block sidebar1 %}
+<p>Sidebar 1</p>
+
+<div>
+
+    <p>Envelope icon: <span class="fas fa-envelope"></span></p>    
+    <p>Envelope link:
+      <a href="#">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </p>
+    <p>Search icon: <span class="fas fa-search"></span></p>
+    <p>A button:<br>
+      <button type="button" class="btn btn-default">
+        <span class="fas fa-search"></span> Search
+      </button>
+    </p>
+    <p>A styled button? :
+      <button type="button" class="btn btn-info">
+        <span class="fas fa-camera-retro"></span> Search
+      </button>
+    </p>
+    <p>Print icon: <span class="fas fa-camera-retro"></span></p>      
+    <p>styled link button??<br>
+      <a href="#" class="btn btn-success btn-lg">
+        <span class="fas fa-camera-retro"></span> Print 
+      </a>
+    </p> 
+  </div>
+
+{% endblock %}
+
+
+<!-- // set the global variable 'foo' in the parent global scope
+parent.foo = 'bar'; 
+var foo = 'bar'; is equal to window.foo = 'bar';
+# External files adopt the scope of the document into which they are included.
+
+These cross-document interactions are only possible if the documents have the same origin. 
+The postMessage method provides the means of interacting cross-domain.
+>You can use it only if the two pages are served from the same domain.
+# window.parent.document ?? 
+# window.parent.parent_function("Hua!"); ? 
+// reference to first form in parent document
+https://www.dyn-web.com/tutorials/iframes/refs/parent.php
+var form = parent.document.forms[0];
+// or, using form id instead
+var form = parent.document.getElementById('myForm');
+
+or have a function in container and call it using parent.some_function
+from the iframe https://stackoverflow.com/a/18051978/7919597
+-->
+
+{% block sidebar2 %}
+{% endblock %}
+
+
+{% block footer %}
+<p>Footer</p>
+{% endblock %}

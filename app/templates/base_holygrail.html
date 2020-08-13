@@ -40,7 +40,7 @@
                 <span class="fas fa-clinic-medical" style="font-size: 2.0em;"></span>
                 <span class="fas fa-syringe" style="font-size: 2.0em;"></span>
                 <span class="fas fa-smile" style="font-size: 2.0em;"></span>
-                <p style="font-size: 1.0em;">Den-Teeth-T MedTech</p>
+                <p style="font-size: 1.0em;">Bohr'n to be Wild MedTech Inc. </p>
 
             </h1>
             <nav class="main-nav">
@@ -50,17 +50,20 @@
                     </li>
 
                     <li>
-                        <a href="#">Websocket Test</a>
+                        <a href="{{ url_for('route_websocket') }}">Websocket Test</a>
                     </li>
                     <li>
-                        <a href="#">API Gateway</a>
+                        <a href="{{ url_for('route_api') }}">API Gateway</a>
                     </li>
 
                     <li>
-                        <a href="#">AWS Lambda</a>
+                        <a href="{{ url_for('route_lambda') }}">AWS Lambda</a>
                     </li>
                     <li>
-                        <a href="#">About RAMI 4.0</a>
+                        <a href="{{ url_for('route_iot') }}">About IoT</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('route_rami') }}">About RAMI 4.0</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -83,7 +86,7 @@
             
             <!-- info on jinja2 with
             https://www.webforefront.com/django/usebuiltinjinjastatements.html -->
-            <hr>
+            <!-- <hr>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul>
@@ -93,7 +96,7 @@
             </ul>
             {% endif %}
             {% endwith %}
-            <hr>
+            <hr> -->
 
             {% block form %}
             {% endblock %}            

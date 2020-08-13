@@ -8,15 +8,28 @@ from app.models import Asset
 
 from flask import request
 from werkzeug.urls import url_parse
+import requests
 
 from app import db
+
+# yes, that function does not belong here.
+# imagine it being imported from a helper module
+def joke():
+    url = 'https://api.chucknorris.io/jokes/random'
+    response = requests.get(url)
+    #print(response)
+    #print(response.text)
+    print(response.json())
+    jokes = response.json()['value']#['jokes'][0]
+    print(jokes)
+    return jokes
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 # @login_required # needs to be inner decorator
 def index():
  
-    # posts = [ {'site': str(_)}  for _ in range(2)]
     form = AssetForm()
 
     flash('flashing() works.')
@@ -26,6 +39,7 @@ def index():
 
     for p in assets:
         print(p.id, p.name, p.owner, p.properties, p.services, p.events)
+
 
     # always false on GET request
     if form.validate_on_submit():
@@ -44,5 +58,46 @@ def index():
 
     return render_template('index_holygrail.html', title='Home',
                                                   assets=assets,
-                                                  form=form)    
+                                                  form=form,
+                                                  joke=joke())
 
+
+@app.route('/websocket', methods=['GET', 'POST'])
+# @login_required # needs to be inner decorator
+def route_websocket():
+ 
+    flash('flashing() works.')
+
+    return render_template('websocket_holygrail.html', title='Websocket')
+
+
+@app.route('/api-gateway', methods=['GET', 'POST'])
+def route_api():
+ 
+    flash('flashing() works.')
+
+    return render_template('api_holygrail.html', title='API Gateway')
+
+
+@app.route('/aws-lambda', methods=['GET', 'POST'])
+def route_lambda():
+ 
+    flash('flashing() works.')
+
+    return render_template('lambda_holygrail.html', title='AWS Lambda')
+
+
+@app.route('/rami', methods=['GET', 'POST'])
+def route_rami():
+ 
+    flash('flashing() works.')
+
+    return render_template('rami_holygrail.html', title='AWS Lambda')
+
+
+@app.route('/iot', methods=['GET', 'POST'])
+def route_iot():
+ 
+    flash('flashing() works.')
+
+    return render_template('iot_holygrail.html', title='IoT')
