@@ -8,3 +8,4 @@ app/__pycache__/models.cpython-37.pyc
 migrations/__pycache__/env.cpython-37.pyc
 migrations/versions/__pycache__/69e550befc23_posts_table.cpython-37.pyc
 migrations/versions/__pycache__/fc6fa8c786a9_users_table.cpython-37.pyc
+__pycache__/application.cpython-37.pyc

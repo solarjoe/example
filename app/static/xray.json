@@ -1,0 +1,55 @@
+{
+  "name": "xray",
+  "revision": "0.0.1",
+  "properties": {
+    "sensor": {
+      "type": "object",
+
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "joblist": { "type": "string" },
+        "current_job": { "type": "string" },
+        "state": { "type": "string" }
+      }
+    },
+    "owner": { "type": "string" }
+  },
+  "operations": {
+    "take_image": {},
+    "delete_image": {},
+    "shutdown": {},
+    "move_sensor": {
+      "parameters": {
+        "id": { "type": "string" },
+        "x": { "type": "number" },
+        "y": { "type": "number" }
+      }
+    }
+  },
+
+  "events": {
+    "error": {
+      "parameters": { "message": { "type": "string" },
+                      "level": { "type": "string"}
+            }
+        },
+    "image_taken": {
+      "parameters": { "data": { "type": "blob" },
+                      "DICOM_dataset_id": { "type": "string"}
+            }
+        }
+    }
+}

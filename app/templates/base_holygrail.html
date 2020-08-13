@@ -1,0 +1,129 @@
+
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="description" content="Some Template">
+  <meta name="author" content="Foo">
+  <meta name="viewport" content="initial-scale=1.0; width=device-width">
+
+  <!-- <link rel="stylesheet" href="/static/styles.css?v=1.0"> -->
+  <link rel="stylesheet" href="/static/holygrail.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/solid.min.css">
+ 
+ 
+
+</head>
+
+<!-- img srcset= with two svg? -->
+
+<!-- {% block body %}{% endblock %} -->
+
+<body class="holy-grail">
+
+    {% block head %}
+    <header class="main-header">
+        <div class="container">
+            <h1 class="mh-logo">
+
+                <span class="fas fa-tooth" style="font-size: 2.0em;"></span>
+                <span class="fas fa-clinic-medical" style="font-size: 2.0em;"></span>
+                <span class="fas fa-syringe" style="font-size: 2.0em;"></span>
+                <span class="fas fa-smile" style="font-size: 2.0em;"></span>
+                <p style="font-size: 1.0em;">Den-Teeth-T MedTech</p>
+
+            </h1>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Websocket Test</a>
+                    </li>
+                    <li>
+                        <a href="#">API Gateway</a>
+                    </li>
+
+                    <li>
+                        <a href="#">AWS Lambda</a>
+                    </li>
+                    <li>
+                        <a href="#">About RAMI 4.0</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+
+                </ul>
+            </nav>
+            
+
+
+
+        </div>
+    </header>   
+    {% endblock %}
+
+
+    <div class="holy-grail-body">
+
+        <section class="holy-grail-content">
+            
+            <!-- info on jinja2 with
+            https://www.webforefront.com/django/usebuiltinjinjastatements.html -->
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <hr>
+
+            {% block form %}
+            {% endblock %}            
+            
+            {% block content %}
+            {% endblock %}
+        </section>
+
+        <div class="holy-grail-sidebar-1 hg-sidebar">
+            {% block sidebar1 %}
+            {% endblock %}
+        </div>
+
+        <div class="holy-grail-sidebar-2 hg-sidebar">
+            {% block sidebar2 %}
+            {% endblock %}
+        </div> 
+
+    </div>
+
+    <footer>
+        {% block footer %}
+        {% endblock %}
+    </footer>
+</body>
+
+
+</html>
+
+
+
+
+

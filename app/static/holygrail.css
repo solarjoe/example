@@ -1,0 +1,210 @@
+
+/**
+ * https://flexbox.ninja/demos/holy-grail-layout/
+ */
+
+* {
+	box-sizing: border-box;
+}
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 1.0em;
+	text-align: center;
+	line-height: 1.0;
+	color: #FFFFFF;
+	background: #007caf;
+}
+
+
+.holy-grail header,
+.holy-grail footer,
+.hg-sidebar,
+.holy-grail-content {
+	padding: 20px;
+}
+.holy-grail header,
+.holy-grail footer {
+	color: #FFF;
+	background: #007caf;
+}
+.hg-sidebar {
+	color: #FFF;
+	background: #007caf;
+}
+.holy-grail-content {
+	color: rgb(0, 0, 0);
+}
+
+/**
+ * Make body at least 100% height
+ * You can also use a combination
+ * of height: 100% in <html> and
+ * min-height: 100% in <body>.
+ */
+.holy-grail {
+	min-height: 100vh;
+}
+
+/**
+ * Let's do a column distribution
+ * (mobile first)
+ * flex value is 1 1 auto to make
+ * body skrinkable and extensible
+ */
+.holy-grail,
+.holy-grail-body {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+}
+
+/**
+ * Content body item is made
+ * extensible too.
+ */
+.holy-grail-content {
+	flex: 1 1 auto;
+}
+
+/**
+ * Put the first sidebar before content.
+ * If you need sidebar to be before content
+ * only in big screen put those 3 next lines
+ * in @media block.
+ */
+.holy-grail-sidebar-1 {
+	order: -1;
+}
+
+/**
+ * Let's introduce bigger screen
+ */
+
+@media (min-width: 768px) {
+	/**
+	 * Body items are now side by side
+	 */
+	.holy-grail-body {
+		flex-direction: row;
+	}
+
+	/**
+	 * Sidebars have a basic 260 width
+	 * and are not really flexible anymore
+	 */
+	.hg-sidebar {
+		flex: 0 0 260px;
+	}
+}
+
+
+/**
+	* https://flexbox.ninja/demos/website-header/
+	*/
+
+
+* {
+	box-sizing: border-box;
+}
+::-moz-selection {
+	background: #094663;
+	color: #FFF;
+}
+::selection {
+	background: #0b33a0;
+	color: #FFF;
+}
+
+
+.sr-only {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+.main-header {
+	background: #ffffff;
+	/* box-shadow: 0 1px 6px rgba(0,0,0,.1); */
+}
+.mh-logo {
+	margin: 0 0 -10px;
+}
+.main-nav a {
+	font-size: 0.75em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #ffffff;
+	text-decoration: none;
+}
+.main-nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.center {
+	margin-top: 4em;
+	text-align: center;
+}
+.center a {
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	color: #ffffff;
+	border-bottom: 1px solid #0d3104;
+	transition: all .275s;
+}
+.center a:hover,
+.center a:focus {
+	opacity: 0.8;
+	padding-bottom: 2px;
+	border-bottom-color: #0d3104;
+}
+
+/**
+ * Flex & layout things:
+ * — Mobile first
+ * — Responsive
+ */
+img {
+	max-width: 100%;
+	height: auto;
+}
+.container {
+	width: 960px;
+	max-width: 100%;
+	padding: 0px;
+	margin: 0 auto;
+}
+.main-header .container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.main-nav ul {
+	margin: 1em 0 .5em;
+	text-align: center;
+}
+.main-nav li {
+	display: inline;
+}
+.main-nav a {
+	display: inline-block;
+	padding: .5em 1.5em;
+}
+
+@media (min-width:960px) {
+	.main-header .container {
+		justify-content: space-between;
+	}
+}
+
+

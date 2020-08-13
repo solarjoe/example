@@ -1,0 +1,122 @@
+{% extends "base_holygrail.html" %}
+
+{% block title %}
+Some Title
+{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+{% for a in assets %}
+        <div><p><b>{{ a.name }}</b> (Owner: {{ a.owner }}) <p>Properties: {{ a.properties }}</p> <p>Services: {{ a.services }} </p><p>Events: {{ a.events }}</p></p></div>
+{% endfor %}
+
+
+
+{% endblock %}
+
+{% block sidebar1 %}
+<p>Sidebar 1</p>
+
+<div>
+
+    <p>Envelope icon: <span class="fas fa-envelope"></span></p>    
+    <p>Envelope link:
+      <a href="#">
+        <span class="fas fa-envelope"></span>
+      </a>
+    </p>
+    <p>Search icon: <span class="fas fa-search"></span></p>
+    <p>A button:<br>
+      <button type="button" class="btn btn-default">
+        <span class="fas fa-search"></span> Search
+      </button>
+    </p>
+    <p>A styled button? :
+      <button type="button" class="btn btn-info">
+        <span class="fas fa-camera-retro"></span> Search
+      </button>
+    </p>
+    <p>Print icon: <span class="fas fa-camera-retro"></span></p>      
+    <p>styled link button??<br>
+      <a href="#" class="btn btn-success btn-lg">
+        <span class="fas fa-camera-retro"></span> Print 
+      </a>
+    </p> 
+  </div>
+
+{% endblock %}
+
+
+<!-- // set the global variable 'foo' in the parent global scope
+parent.foo = 'bar'; 
+var foo = 'bar'; is equal to window.foo = 'bar';
+# External files adopt the scope of the document into which they are included.
+
+These cross-document interactions are only possible if the documents have the same origin. 
+The postMessage method provides the means of interacting cross-domain.
+>You can use it only if the two pages are served from the same domain.
+# window.parent.document ?? 
+# window.parent.parent_function("Hua!"); ? 
+// reference to first form in parent document
+https://www.dyn-web.com/tutorials/iframes/refs/parent.php
+var form = parent.document.forms[0];
+// or, using form id instead
+var form = parent.document.getElementById('myForm');
+
+or have a function in container and call it using parent.some_function
+from the iframe https://stackoverflow.com/a/18051978/7919597
+-->
+
+{% block sidebar2 %}
+<p>Enter new device / asset / IoT thing:<br></p>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=32) }}<br>
+        {% for error in form.name.errors %}
+        <span style="color: rgb(168, 31, 31);">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.owner.label }}<br>
+        {{ form.owner(size=32) }}<br>
+        {% for error in form.owner.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.properties.label }}<br>
+        {{ form.properties(size=32) }}<br>
+        {% for error in form.properties.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+      {{ form.services.label }}<br>
+      {{ form.services(size=32) }}<br>
+      {% for error in form.services.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+  </p>    
+  <p>
+    {{ form.events.label }}<br>
+    {{ form.events(size=32) }}<br>
+    {% for error in form.events.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
+
+
+{% block footer %}
+<p>Footer</p>
+{% endblock %}
