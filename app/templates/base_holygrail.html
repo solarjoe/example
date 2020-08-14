@@ -49,16 +49,9 @@
                         <a href="{{ url_for('index') }}">Home</a>
                     </li>
 
-                    <!-- <li>
-                        <a href="{{ url_for('route_websocket') }}">Websocket Test</a>
-                    </li>
                     <li>
-                        <a href="{{ url_for('route_api') }}">API Gateway</a>
+                        <a href="{{ url_for('route_lambda') }}">AWS Lambda Mock</a>
                     </li>
-
-                    <li>
-                        <a href="{{ url_for('route_lambda') }}">AWS Lambda</a>
-                    </li> -->
                     <li>
                         <a href="{{ url_for('route_iot') }}">About IoT</a>
                     </li>
@@ -107,6 +100,22 @@
 
         <div class="holy-grail-sidebar-1 hg-sidebar">
             {% block sidebar1 %}
+            <p>Sidebar 1</p>
+            
+            <div>
+            
+                <p>Envelope link:
+                  <a href="#">
+                    <span class="fas fa-envelope"></span>
+                  </a>
+                </p>
+                  <button type="button" class="btn btn-default">
+                    <span class="fas fa-search"></span> Search
+                  </button>
+                </p>
+            
+              </div>
+            
             {% endblock %}
         </div>
 

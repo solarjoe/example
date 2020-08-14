@@ -1,16 +1,21 @@
 from app import app
 
 from flask import render_template,request, flash, redirect
-from flask import url_for
+from flask import url_for, jsonify
 from app.forms import AssetForm
 
 from app.models import Asset
+
+from app.my_lambda_function import handler
+
 
 from flask import request
 from werkzeug.urls import url_parse
 import requests
 
 from app import db
+
+import uuid
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -47,29 +52,13 @@ def index():
                                                   form=form)
 
 
-@app.route('/websocket', methods=['GET', 'POST'])
-# @login_required # needs to be inner decorator
-def route_websocket():
- 
-    flash('flashing() works.')
-
-    return render_template('websocket_holygrail.html', title='Websocket')
-
-
-@app.route('/api-gateway', methods=['GET', 'POST'])
-def route_api():
- 
-    flash('flashing() works.')
-
-    return render_template('api_holygrail.html', title='API Gateway')
-
-
-@app.route('/aws-lambda', methods=['GET', 'POST'])
+@app.route("/lambda", methods=['GET', "POST"])
 def route_lambda():
- 
-    flash('flashing() works.')
 
-    return render_template('lambda_holygrail.html', title='AWS Lambda')
+    class FakeAWSContext(object):
+        aws_request_id = str(uuid.uuid4())
+
+    return jsonify(**handler(None, FakeAWSContext()))
 
 
 @app.route('/rami', methods=['GET', 'POST'])
