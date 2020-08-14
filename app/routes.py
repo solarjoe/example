@@ -71,7 +71,7 @@ def route_rami():
     if debug:
         flash('flashing() works.')
 
-    return render_template('rami_holygrail.html', title='AWS Lambda')
+    return render_template('rami_holygrail.html', title='RAMI')
 
 
 @app.route('/iot', methods=['GET', 'POST'])
@@ -81,6 +81,39 @@ def route_iot():
         flash('flashing() works.')
 
     return render_template('iot_holygrail.html', title='IoT')
+
+
+@app.route('/unittest', methods=['GET', 'POST'])
+def route_unittest():
+ 
+    if debug:
+        flash('flashing() works.')
+
+    from test.test_lambda import SomeTestCases
+    import unittest
+    import io
+    import contextlib
+
+    # https://stackoverflow.com/questions/56045623/python-how-to-capture-the-stdout-stderr-of-a-unittest-in-a-variable
+    #TODO: pass class or instance?
+    suite = unittest.TestLoader().loadTestsFromTestCase(SomeTestCases)
+
+    result_str = None
+
+    with io.StringIO() as buf:
+        # run the tests
+        with contextlib.redirect_stdout(buf):
+            testResult = unittest.TextTestRunner(stream=buf, verbosity=2).run(suite)
+        # process (in this case: print) the results
+        print('*** CAPTURED TEXT***:\n%s' % buf.getvalue())
+
+        result_str = buf.getvalue().replace('\n', '<br>')
+
+    # unittest.TextTestRunner().run(MyTest())
+
+    return render_template('unittest_holygrail.html', result2=result_str, result=testResult, title='UnitTest')
+
+
 
 @app.route('/contact', methods=['GET', 'POST'])
 def route_contact():

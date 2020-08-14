@@ -2,7 +2,7 @@ import unittest
 from app.my_lambda_function import handler
 import uuid
 
-class SomeTestCase(unittest.TestCase):
+class SomeTestCases(unittest.TestCase):
 
     def setUp(self):
 
@@ -34,6 +34,10 @@ class SomeTestCase(unittest.TestCase):
     def test_response_4(self):
 
         self.assertEqual(self.response["aws_request_id"], self.mock_context.aws_request_id)
+
+    def test_response_5(self):
+
+        self.assertEqual(1, 2)
 
 if __name__ == '__main__':
     unittest.main()
