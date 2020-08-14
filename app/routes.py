@@ -12,19 +12,6 @@ import requests
 
 from app import db
 
-# yes, that function does not belong here.
-# imagine it being imported from a helper module
-def joke():
-    url = 'https://api.chucknorris.io/jokes/random'
-    response = requests.get(url)
-    #print(response)
-    #print(response.text)
-    print(response.json())
-    jokes = response.json()['value']#['jokes'][0]
-    print(jokes)
-    return jokes
-
-
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 # @login_required # needs to be inner decorator
@@ -39,7 +26,6 @@ def index():
 
     for p in assets:
         print(p.id, p.name, p.owner, p.properties, p.services, p.events)
-
 
     # always false on GET request
     if form.validate_on_submit():
@@ -58,8 +44,7 @@ def index():
 
     return render_template('index_holygrail.html', title='Home',
                                                   assets=assets,
-                                                  form=form,
-                                                  joke=joke())
+                                                  form=form)
 
 
 @app.route('/websocket', methods=['GET', 'POST'])
