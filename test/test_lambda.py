@@ -14,7 +14,7 @@ class SomeTestCases(unittest.TestCase):
             aws_request_id = str(uuid.uuid4())
 
         self.mock_context = FakeAWSContext()
-        self.response = handler(None, FakeAWSContext())
+        self.response = handler(None, self.mock_context)
 
     def tearDown(self):
         pass
