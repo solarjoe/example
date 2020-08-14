@@ -8,7 +8,6 @@ from app.models import Asset
 
 from app.my_lambda_function import handler
 
-
 from flask import request
 from werkzeug.urls import url_parse
 import requests
@@ -17,6 +16,13 @@ from app import db
 
 import uuid
 
+import logging
+logger = logging.getLogger()
+
+debug = False
+if logger.level == logging.DEBUG:
+    debug = True
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 # @login_required # needs to be inner decorator
@@ -24,13 +30,11 @@ def index():
  
     form = AssetForm()
 
-    flash('flashing() works.')
+    if debug:
+        flash('flashing() works.')
 
     # get all assets from database, 
     assets = Asset.query.all()
-
-    for p in assets:
-        print(p.id, p.name, p.owner, p.properties, p.services, p.events)
 
     # always false on GET request
     if form.validate_on_submit():
@@ -64,7 +68,8 @@ def route_lambda():
 @app.route('/rami', methods=['GET', 'POST'])
 def route_rami():
  
-    flash('flashing() works.')
+    if debug:
+        flash('flashing() works.')
 
     return render_template('rami_holygrail.html', title='AWS Lambda')
 
@@ -72,6 +77,15 @@ def route_rami():
 @app.route('/iot', methods=['GET', 'POST'])
 def route_iot():
  
-    flash('flashing() works.')
+    if debug:
+        flash('flashing() works.')
 
     return render_template('iot_holygrail.html', title='IoT')
+
+@app.route('/contact', methods=['GET', 'POST'])
+def route_contact():
+ 
+    if debug:
+        flash('flashing() works.')
+
+    return render_template('contact_holygrail.html', title='IoT')    

@@ -14,3 +14,7 @@ __pycache__/application.cpython-37.pyc
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+test/__pycache__/test_lambda.cpython-37.pyc
+test/__pycache__/test_hash.cpython-37.pyc
+test/__pycache__/__init__.cpython-37.pyc
+app/__pycache__/my_lambda_function.cpython-37.pyc
